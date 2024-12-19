@@ -6,10 +6,9 @@
     <URI>\AdobeHostBlock</URI>
   </RegistrationInfo>
   <Triggers>
-    <LogonTrigger>
+    <BootTrigger>
       <Enabled>true</Enabled>
-      <Delay>PT10S</Delay>
-    </LogonTrigger>
+    </BootTrigger>
   </Triggers>
   <Principals>
     <Principal id="Author">
@@ -21,9 +20,9 @@
     <MultipleInstancesPolicy>IgnoreNew</MultipleInstancesPolicy>
     <DisallowStartIfOnBatteries>false</DisallowStartIfOnBatteries>
     <StopIfGoingOnBatteries>false</StopIfGoingOnBatteries>
-    <AllowHardTerminate>false</AllowHardTerminate>
+    <AllowHardTerminate>true</AllowHardTerminate>
     <StartWhenAvailable>true</StartWhenAvailable>
-    <RunOnlyIfNetworkAvailable>true</RunOnlyIfNetworkAvailable>
+    <RunOnlyIfNetworkAvailable>false</RunOnlyIfNetworkAvailable>
     <IdleSettings>
       <StopOnIdleEnd>true</StopOnIdleEnd>
       <RestartOnIdle>false</RestartOnIdle>
@@ -37,10 +36,14 @@
     <Priority>7</Priority>
     <RestartOnFailure>
       <Interval>PT1M</Interval>
-      <Count>3</Count>
+      <Count>100</Count>
     </RestartOnFailure>
   </Settings>
   <Actions Context="Author">
+    <Exec>
+      <Command>powershell</Command>
+      <Arguments>do { Start-Sleep -Seconds 5 } until (Test-Connection -ComputerName google.com -Count 1 -Quiet)</Arguments>
+    </Exec>
     <Exec>
       <Command>powershell</Command>
       <Arguments>-Command "Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/minhtuan283/hostAdobe/main/hosts' -OutFile 'C:\Windows\System32\drivers\etc\hosts'"</Arguments>
