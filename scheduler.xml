@@ -8,7 +8,7 @@
   <Triggers>
     <LogonTrigger>
       <Enabled>true</Enabled>
-      <Delay>PT30S</Delay>
+      <Delay>PT10S</Delay>
     </LogonTrigger>
   </Triggers>
   <Principals>
@@ -21,7 +21,7 @@
     <MultipleInstancesPolicy>IgnoreNew</MultipleInstancesPolicy>
     <DisallowStartIfOnBatteries>false</DisallowStartIfOnBatteries>
     <StopIfGoingOnBatteries>false</StopIfGoingOnBatteries>
-    <AllowHardTerminate>true</AllowHardTerminate>
+    <AllowHardTerminate>false</AllowHardTerminate>
     <StartWhenAvailable>true</StartWhenAvailable>
     <RunOnlyIfNetworkAvailable>true</RunOnlyIfNetworkAvailable>
     <IdleSettings>
