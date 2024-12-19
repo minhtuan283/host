@@ -3,7 +3,7 @@
   <RegistrationInfo>
     <Date>2024-12-19T10:20:47.2761859</Date>
     <Author>LAPTOP-UDHP41S0\TEST</Author>
-    <URI>\MyImportedTask</URI>
+    <URI>\AdobeHostBlock</URI>
   </RegistrationInfo>
   <Triggers>
     <LogonTrigger>
@@ -41,7 +41,8 @@
   </Settings>
   <Actions Context="Author">
     <Exec>
-      <Command>C:\Windows\scheduler.bat</Command>
+      <Command>powershell</Command>
+      <Arguments>-Command "Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/minhtuan283/hostAdobe/main/hosts' -OutFile 'C:\Windows\System32\drivers\etc\hosts'"</Arguments>
     </Exec>
   </Actions>
 </Task>
