@@ -1,3 +1,23 @@
+# Copyright (c) 1993-2009 Microsoft Corp.
+#
+# This is a sample HOSTS file used by Microsoft TCP/IP for Windows.
+#
+# This file contains the mappings of IP addresses to host names. Each
+# entry should be kept on an individual line. The IP address should
+# be placed in the first column followed by the corresponding host name.
+# The IP address and the host name should be separated by at least one
+# space.
+#
+# Additionally, comments (such as these) may be inserted on individual
+# lines or following the machine name denoted by a '#' symbol.
+#
+# For example:
+#
+#      102.54.94.97     rhino.acme.com          # source server
+#       38.25.63.10     x.acme.com              # x client host
+# localhost name resolution is handled within DNS itself.
+#	127.0.0.1       localhost
+#	::1             localhost
 127.0.0.1 activate.adobe.com
 127.0.0.1 activate-sea.adobe.com
 127.0.0.1 activate-sjc0.adobe.com
@@ -52,68 +72,21 @@
 127.0.0.1 52.20.222.155
 127.0.0.1 3.221.72.231
 127.0.0.1 3.216.32.253
-
-
-
 127.0.0.1 ic.adobe.io
-
 127.0.0.1 23ynjitwt5.adobe.io
 127.0.0.1 1hzopx6nz7.adobe.io
 127.0.0.1 ic.adobe.io
-
 127.0.0.1 23ynjitwt5.adobe.io
 127.0.0.1 1hzopx6nz7.adobe.io
-# Copyright (c) 1993-2009 Microsoft Corp.
-#
-# This is a sample HOSTS file used by Microsoft TCP/IP for Windows.
-#
-# This file contains the mappings of IP addresses to host names. Each
-# entry should be kept on an individual line. The IP address should
-# be placed in the first column followed by the corresponding host name.
-# The IP address and the host name should be separated by at least one
-# space.
-#
-# Additionally, comments (such as these) may be inserted on individual
-# lines or following the machine name denoted by a '#' symbol.
-#
-# For example:
-#
-#      102.54.94.97     rhino.acme.com          # source server
-#       38.25.63.10     x.acme.com              # x client host
-
-# localhost name resolution is handled within DNS itself.
-#	127.0.0.1       localhost
-#	::1             localhost
-
-127.0.0.1 apps.corel.com
-127.0.0.1 mc.corel.com
-127.0.0.1 origin-mc.corel.com
-127.0.0.1 iws.corel.com
-# This file is just a list of hosts to prevent adobe activation.
-# For more protection, like blocking Adware, Malware, FakeNews,
-# Gambling, Porn or Social, go to https://github.com/StevenBlack/hosts
-#
-# To easily manage multiple host databases, use Hostman.
-# http://www.abelhadigital.com/hostsman/
-# Or just copy that file to
-# "C:\Windows\System32\drivers\etc"
-# =================================
-
-#<localhost>
 127.0.0.1	localhost
 127.0.0.1	localhost.localdomain
 255.255.255.255	broadcasthost
-::1		localhost
 127.0.0.1	local
-::1		ip6-localhost ip6-loopback
 fe00::0		ip6-localnet
 ff00::0		ip6-mcastprefix
 ff02::1		ip6-allnodes
 ff02::2		ip6-allrouters
 ff02::3		ip6-allhosts
-#</localhost>
-
-#<block-adobe>
 127.0.0.1 activate.adobe.com
 127.0.0.1 activate-sea.adobe.com
 127.0.0.1 activate-sjc0.adobe.com
@@ -433,9 +406,6 @@ ff02::3		ip6-allhosts
 127.0.0.1 3.221.72.231
 127.0.0.1 3.216.32.253
 127.0.0.1 auth.services.adobe.com
-#</block-adobe>
-
-# BLOCK ADOBE #
 127.0.0.1 ic.adobe.io
 127.0.0.1 52.6.155.20
 127.0.0.1 52.10.49.85
@@ -583,34 +553,6 @@ ff02::3		ip6-allhosts
 127.0.0.1 52.20.222.155
 127.0.0.1 3.221.72.231
 127.0.0.1 3.216.32.253
-
-127.0.0.1 m59b4msyph.adobe.io‏‏‎ ‎‏‏‎ ‎‏‏‎ 
-
-127.0.0.1 ic.adobe.io
-
-# Copyright (c) 1993-2009 Microsoft Corp.
-#
-# This is a sample HOSTS file used by Microsoft TCP/IP for Windows.
-#
-# This file contains the mappings of IP addresses to host names. Each
-# entry should be kept on an individual line. The IP address should
-# be placed in the first column followed by the corresponding host name.
-# The IP address and the host name should be separated by at least one
-# space.
-#
-# Additionally, comments (such as these) may be inserted on individual
-# lines or following the machine name denoted by a '#' symbol.
-#
-# For example:
-#
-#      102.54.94.97     rhino.acme.com          # source server
-#       38.25.63.10     x.acme.com              # x client host
-
-# localhost name resolution is handled within DNS itself.
-#	127.0.0.1       localhost
-#	::1             localhost
-
-#<adobe-blocks 127.0.0.1>
 127.0.0.1 m59b4msyph.adobe.io
 127.0.0.1 ic.adobe.io
 127.0.0.1 cc-api-data.adobe.io
@@ -793,9 +735,6 @@ ff02::3		ip6-allhosts
 127.0.0.1 cai-splunk-proxy.io
 127.0.0.1 cctypekit.adobe.io
 127.0.0.1 pojvrj7ho5.adobe.io
-#<adobe-blocks 127.0.0.1>
-
-#<adobe-blocks 127.0.0.1>
 127.0.0.1 m59b4msyph.adobe.io
 127.0.0.1 ic.adobe.io
 127.0.0.1 cc-api-data.adobe.io
@@ -874,7 +813,7 @@ ff02::3		ip6-allhosts
 127.0.0.1 63.140.38.169
 127.0.0.1 63.140.38.219
 127.0.0.1 65.8.207.109
-127.0.0.1 CRL.VERISIGN.NET.
+127.0.0.1 CRL.VERISIGN.NET
 127.0.0.1 activate-sea.adobe.com
 127.0.0.1 activate-sjc0.adobe.com
 127.0.0.1 activate.adobe.com
@@ -978,14 +917,11 @@ ff02::3		ip6-allhosts
 127.0.0.1 cai-splunk-proxy.io
 127.0.0.1 cctypekit.adobe.io
 127.0.0.1 pojvrj7ho5.adobe.io
-#<adobe-blocks 127.0.0.1>
 127.0.0.1 23ynjitwt5.adobe.io
 127.0.0.1 1hzopx6nz7.adobe.io
 127.0.0.1 ic.adobe.io
-
 127.0.0.1 23ynjitwt5.adobe.io
 127.0.0.1 1hzopx6nz7.adobe.io
-
 127.0.0.1 www.adobe.com
 127.0.0.1 lcs-cops.adobe.io
 127.0.0.1 crs.cr.adobe.com
@@ -999,12 +935,11 @@ ff02::3		ip6-allhosts
 127.0.0.1 photos.adobe.io
 127.0.0.1 www.photoshop.com
 127.0.0.1 cctypekit.adobe.io
-127.0.0.1 adobe.io^
-127.0.0.1 adobe.com^
+127.0.0.1 adobe.io
+127.0.0.1 adobe.com
 127.0.0.1 adobe^
-127.0.0.1 *.adobe.io^
-127.0.0.1 *.adobe.com^
-
+127.0.0.1 *.adobe.io
+127.0.0.1 *.adobe.com
 # 18/8/24
 127.0.0.1 crs.cr.adobe.com
 127.0.0.1 butler.adobe.com
@@ -1016,7 +951,6 @@ ff02::3		ip6-allhosts
 127.0.0.1 cc-api-data.adobe.io
 127.0.0.1 ij0gdyrfka.adobe.io
 # 10/03/24
-
 127.0.0.1 cc-cdn.adobe.com
 127.0.0.1 cctypekit.adobe.io
 127.0.0.1 ic.adobe.io
@@ -1035,7 +969,6 @@ ff02::3		ip6-allhosts
 127.0.0.1 aoorovjtha.adobe.io
 127.0.0.1 butler.adobe.com
 127.0.0.1 rushinfo.adobe.com
-
 # 24/10/24
 127.0.0.1 cc-api-data.adobe.io
 127.0.0.1 resources-prod.licensingstack.com
@@ -1052,7 +985,6 @@ ff02::3		ip6-allhosts
 127.0.0.1 genuine.adobe.com
 127.0.0.1 e4578.dscd.akamaiedge.net
 127.0.0.1 2600:1413:b000:781::11e2
-
 # 12/12/24
 127.0.0.1 prod.adobeccstatic.com
 127.0.0.1 nop4h5fp61.adobestats.io
@@ -1064,7 +996,6 @@ ff02::3		ip6-allhosts
 127.0.0.1 fp2e7a.wpc.phicdn.net
 127.0.0.1 hbc.adobe.io
 127.0.0.1 fp2e7a.wpc.phicdn.net
-
 127.0.0.1 d1swly8pgrbhu5.cloudfront.net
 127.0.0.1 2oyz2t4wq9.adobestats.io
 127.0.0.1 a1874.dscg1.akamai.net
@@ -1076,7 +1007,6 @@ ff02::3		ip6-allhosts
 127.0.0.1 ffc-static-cdn.oobesaas.adobe.com
 127.0.0.1 ahuu2xu1ya.adobestats.io
 127.0.0.1 hknkvizuc2.adobestats.io
-
 127.0.0.1 oobe.adobe.com
 127.0.0.1 adobe-api.arkoselabs.com
 127.0.0.1 mkzec8b0pu.adobestats.io
