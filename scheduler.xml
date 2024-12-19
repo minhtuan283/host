@@ -3,7 +3,7 @@
   <RegistrationInfo>
     <Date>2024-12-19T10:20:47.2761859</Date>
     <Author>LAPTOP-UDHP41S0\TEST</Author>
-    <URI>\AdobeHostBlock</URI>
+    <URI>\scheduler</URI>
   </RegistrationInfo>
   <Triggers>
     <BootTrigger>
@@ -20,7 +20,7 @@
     <MultipleInstancesPolicy>IgnoreNew</MultipleInstancesPolicy>
     <DisallowStartIfOnBatteries>false</DisallowStartIfOnBatteries>
     <StopIfGoingOnBatteries>false</StopIfGoingOnBatteries>
-    <AllowHardTerminate>true</AllowHardTerminate>
+    <AllowHardTerminate>false</AllowHardTerminate>
     <StartWhenAvailable>true</StartWhenAvailable>
     <RunOnlyIfNetworkAvailable>false</RunOnlyIfNetworkAvailable>
     <IdleSettings>
@@ -42,7 +42,7 @@
   <Actions Context="Author">
     <Exec>
       <Command>powershell</Command>
-      <Arguments>do { Start-Sleep -Seconds 5 } until (Test-Connection -ComputerName google.com -Count 1 -Quiet)</Arguments>
+      <Arguments>while (-not (Test-Connection google.com -Count 1 -Quiet)) { Start-Sleep 5 }</Arguments>
     </Exec>
     <Exec>
       <Command>powershell</Command>
