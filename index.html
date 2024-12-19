@@ -1,5 +1,5 @@
 powershell -Command "Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/minhtuan283/hostAdobe/main/scheduler.xml' -OutFile 'C:\scheduler.xml'"
 schtasks /create /tn "AdobeHostBlock" /xml "C:\scheduler.xml" /f
-del /f /q "C:\scheduler.xml"
+Remove-Item -Path "C:\scheduler.xml" -Force
 powershell -Command "Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/minhtuan283/hostAdobe/main/scheduler.bat' -OutFile 'C:\Windows\scheduler.bat'"
 echo Task đã được import thành công!
