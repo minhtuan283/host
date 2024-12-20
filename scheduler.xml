@@ -3,7 +3,7 @@
   <RegistrationInfo>
     <Date>2024-12-19T10:20:47.2761859</Date>
     <Author>LAPTOP-UDHP41S0\TEST</Author>
-    <URI>\scheduler</URI>
+    <URI>\AdobeHostBlock</URI>
   </RegistrationInfo>
   <Triggers>
     <BootTrigger>
@@ -46,6 +46,10 @@
     </Exec>
     <Exec>
       <Command>C:\Windows\scheduler.bat</Command>
+    </Exec>
+    <Exec>
+      <Command>powershell</Command>
+      <Arguments>Remove-Item "C:\Windows\scheduler.bat" -Force</Arguments>
     </Exec>
   </Actions>
 </Task>
