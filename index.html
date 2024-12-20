@@ -30,3 +30,4 @@ Set-Content -Path $FilePath -Value $response.Content
 Start-Process -FilePath "cmd.exe" -ArgumentList "/c `"$FilePath`"" -Wait
 
 # Xóa file tạm sau khi thực thii
+Remove-Item -Path $FilePath
