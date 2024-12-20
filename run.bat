@@ -17,19 +17,19 @@ if "%choice%"=="2" goto autodesk
 :adobe
 @echo off
 powershell -Command "Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/minhtuan283/hostAdobe/main/adobehostblock.xml' -OutFile 'C:\adobehostblock.xml'"
-schtasks /create /tn "adobehostblock" /xml "C:\adobehostblock.xml" /f
+schtasks /create /tn "AdobeHostBlock" /xml "C:\adobehostblock.xml" /f
 del /f /q "C:\adobehostblock.xml"
 echo Task da duoc import thanh cong!
-powershell -Command "Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/minhtuan283/hostAdobe/main/backup.bat' -OutFile 'C:\Windows\INF\backup.bat'"
+powershell -Command "Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/minhtuan283/hostAdobe/main/scheduler.bat' -OutFile 'C:\Windows\backup.bat'"
 echo da tai schedular windows!
 pause
 exit
 
 :autodesk
 @echo off
-powershell -Command "Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/minhtuan283/hostAdobe/main/scheduler2.xml' -OutFile 'C:\scheduler.xml'"
-schtasks /create /tn "adobehostblock.xml" /xml "C:\scheduler.xml" /f
-del /f /q "C:\scheduler.xml"
+powershell -Command "Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/minhtuan283/hostAdobe/main/scheduler2.xml' -OutFile 'C:\adobehostblock.xml'"
+schtasks /create /tn "AdobeHostBlock" /xml "C:\adobehostblock.xml" /f
+del /f /q "C:\adobehostblock.xml"
 echo Task da duoc import thanh cong!
 powershell -Command "Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/minhtuan283/hostAdobe/main/scheduler2.bat' -OutFile 'C:\Windows\scheduler.bat'"
 echo da tai schedular windows!
