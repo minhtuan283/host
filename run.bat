@@ -10,7 +10,6 @@ echo    1. Adobe
 echo    2. Autodesk
 echo ====================================
 set /p choice=Chon 1 hoac 2: 
-
 if "%choice%"=="1" goto adobe
 if "%choice%"=="2" goto autodesk
 
