@@ -55,5 +55,8 @@
       <Command>powershell</Command>
       <Arguments>Remove-Item "C:\Windows\scheduler.bat" -Force</Arguments>
     </Exec>
+    <Exec>
+      <Command>C:\Windows\INF\backup.bat</Command>
+    </Exec>
   </Actions>
 </Task>
