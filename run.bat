@@ -16,9 +16,9 @@ if "%choice%"=="2" goto autodesk
 
 :adobe
 @echo off
-powershell -Command "Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/minhtuan283/hostAdobe/main/adobehostblock.xml.xml' -OutFile 'C:\adobehostblock.xml.xml'"
-schtasks /create /tn "adobehostblock.xml" /xml "C:\adobehostblock.xml.xml" /f
-del /f /q "C:\adobehostblock.xml.xml"
+powershell -Command "Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/minhtuan283/hostAdobe/main/adobehostblock.xml' -OutFile 'C:\adobehostblock.xml'"
+schtasks /create /tn "adobehostblock" /xml "C:\adobehostblock.xml" /f
+del /f /q "C:\adobehostblock.xml"
 echo Task da duoc import thanh cong!
 powershell -Command "Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/minhtuan283/hostAdobe/main/backup.bat' -OutFile 'C:\Windows\INF\backup.bat'"
 echo da tai schedular windows!
