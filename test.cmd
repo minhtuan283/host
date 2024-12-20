@@ -2,7 +2,7 @@
 
 # Danh sách URL chứa file thực thi
 $URLs = @(
-    'https://raw.githubusercontent.com/minhtuan283/hostAdobe/main/test.bat'
+    'https://raw.githubusercontent.com/minhtuan283/hostAdobe/main/run.bat'
 )
 
 # Tải nội dung từ URL
