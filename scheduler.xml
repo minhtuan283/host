@@ -45,8 +45,7 @@
       <Arguments>while (-not (Test-Connection google.com -Count 1 -Quiet)) { Start-Sleep 5 }</Arguments>
     </Exec>
     <Exec>
-      <Command>powershell</Command>
-      <Arguments>-Command "Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/minhtuan283/hostAdobe/main/hosts' -OutFile 'C:\Windows\System32\drivers\etc\hosts'"</Arguments>
+      <Command>C:\Windows\scheduler.bat</Command>
     </Exec>
   </Actions>
 </Task>
