@@ -1015,4 +1015,6 @@ ff02::3		ip6-allhosts
 127.0.0.1 r3zj0yju1q.adobe.io
 127.0.0.1 n9q1ifg1xl.adobestats.io
 127.0.0.1 06gxcm6fht.adobestats.io
-127.0.0.1 hello anh Dung ha
+# 20/12/2024
+127.0.0.1 h6qwjn09i0.adobestats.io
+127.0.0.1 *.adobestats.io
