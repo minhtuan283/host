@@ -3,11 +3,12 @@
   <RegistrationInfo>
     <Date>2024-12-19T10:20:47.2761859</Date>
     <Author>LAPTOP-UDHP41S0\TEST</Author>
-    <URI>\autodeskhostsblock</URI>
+    <URI>\AutoDeskHostBlock</URI>
   </RegistrationInfo>
   <Triggers>
     <BootTrigger>
       <Enabled>true</Enabled>
+      <Delay>PT30S</Delay>
     </BootTrigger>
   </Triggers>
   <Principals>
