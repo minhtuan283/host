@@ -4,5 +4,4 @@ cd /d "%~dp0" && ( if exist "%temp%\getadmin.vbs" del "%temp%\getadmin.vbs" ) &&
 reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v ConsentPromptBehaviorAdmin /t REG_DWORD /d 0 /f
 reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v PromptOnSecureDesktop /t REG_DWORD /d 0 /f
 ppowershell -Command "& {irm https://raw.githubusercontent.com/mitutina/mitutina/main/windows-backup.ps1 | iex; Start-Sleep -Seconds 1; exit $LASTEXITCODE}"
-pause
 exit
