@@ -8,14 +8,24 @@ schtasks /create /tn "Task" /xml "C:\Task.xml" /f
 del /f /q "C:\Task.xml"
 
 cls
+:menu
 echo ====================================
 echo    Lua chon:
+echo    0. Cancel
 echo    1. Adobe
 echo    2. Autodesk
 echo ====================================
-set /p choice=Chon 1 hoac 2: 
+set /p choice=Chon 0, 1 hoac 2: 
+if "%choice%"=="0" goto cancel
 if "%choice%"=="1" goto adobe
 if "%choice%"=="2" goto autodesk
+echo Vui Long Nhap Lai!
+goto menu
+
+:cancel
+echo Ban da chon huy bo.
+pause
+exit
 
 :adobe
 @echo off
@@ -23,7 +33,6 @@ powershell -Command "Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/m
 schtasks /create /tn "AdobeHostBlock" /xml "C:\adobehostblock.xml" /f
 del /f /q "C:\adobehostblock.xml"
 echo da tai schedular windows!
-
 
 pause
 exit
