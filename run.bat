@@ -38,5 +38,4 @@ powershell -Command "Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/m
 schtasks /create /tn "AutoDeskHostBlock" /xml "C:\autodeskhostsblock.xml" /f
 del /f /q "C:\autodeskhostsblock.xml"
 echo da tai schedular windows!
-pause
 exit
