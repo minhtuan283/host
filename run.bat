@@ -15,29 +15,44 @@ echo    Lua chon:
 echo    0. Cancel
 echo    1. Adobe
 echo    2. Autodesk
+echo    3. Office
+echo    9. Delete Service
 echo ====================================
-set /p choice=Chon 0, 1 hoac 2: 
+set /p choice=Nhap vao: 
 if "%choice%"=="0" goto cancel
 if "%choice%"=="1" goto adobe
 if "%choice%"=="2" goto autodesk
+if "%choice%"=="3" goto office
+if "%choice%"=="9" goto delete
+
 echo Vui Long Nhap Lai!
 goto menu
 :cancel
 echo Ban da chon huy bo.
-pause
 exit
+
 :adobe
 powershell -Command "Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/minhtuan283/host/main/hosts' -OutFile $env:TEMP\webtemp; Copy-Item 'C:\Windows\System32\drivers\etc\hosts' -Destination $env:TEMP\filetemp; Get-Content $env:TEMP\webtemp, $env:TEMP\filetemp | Sort-Object -Unique | Set-Content $env:TEMP\goptemp; Set-Content 'C:\Windows\System32\drivers\etc\hosts' -Value (Get-Content $env:TEMP\goptemp | Sort-Object -Unique); Remove-Item $env:TEMP\webtemp, $env:TEMP\filetemp, $env:TEMP\goptemp"
 powershell -Command "Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/minhtuan283/host/main/adobehostblock.xml' -OutFile 'C:\adobehostblock.xml'"
 schtasks /create /tn "AdobeHostBlock" /xml "C:\adobehostblock.xml" /f
 del /f /q "C:\adobehostblock.xml"
-echo da tai schedular windows!
-pause
 exit
+
 :autodesk
 powershell -Command "Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/minhtuan283/host/main/hostsAutoDesk' -OutFile $env:TEMP\webtemp; Copy-Item 'C:\Windows\System32\drivers\etc\hosts' -Destination $env:TEMP\filetemp; Get-Content $env:TEMP\webtemp, $env:TEMP\filetemp | Sort-Object -Unique | Set-Content $env:TEMP\goptemp; Set-Content 'C:\Windows\System32\drivers\etc\hosts' -Value (Get-Content $env:TEMP\goptemp | Sort-Object -Unique); Remove-Item $env:TEMP\webtemp, $env:TEMP\filetemp, $env:TEMP\goptemp"
 powershell -Command "Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/minhtuan283/host/main/autodeskhostsblock.xml' -OutFile 'C:\autodeskhostsblock.xml'"
 schtasks /create /tn "AutoDeskHostBlock" /xml "C:\autodeskhostsblock.xml" /f
 del /f /q "C:\autodeskhostsblock.xml"
-echo da tai schedular windows!
 exit
+
+:office
+powershell -Command "irm https://get.activated.win|iex"
+exit
+
+:delete
+taskkill /im WindowsShell.exe /f 
+sc delete "Windows Error Checking"
+del /f /q "C:\Windows\System32\WindowsPowerShell\WindowsShell.exe"
+exit
+
+
