@@ -38,18 +38,22 @@ pause
 exit
 
 :adobe
-powershell -Command "Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/minhtuan283/host/main/hosts' -OutFile $env:TEMP\webtemp; Copy-Item 'C:\Windows\System32\drivers\etc\hosts' -Destination $env:TEMP\filetemp; Get-Content $env:TEMP\webtemp, $env:TEMP\filetemp | Sort-Object -Unique | Set-Content $env:TEMP\goptemp; Set-Content 'C:\Windows\System32\drivers\etc\hosts' -Value (Get-Content $env:TEMP\goptemp | Sort-Object -Unique); Remove-Item $env:TEMP\webtemp, $env:TEMP\filetemp, $env:TEMP\goptemp"
+schtasks /End /TN "AdobeHostBlock"
+schtasks /Delete /TN "AdobeHostBlock" /F
 powershell -Command "Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/minhtuan283/host/main/adobehostblock.xml' -OutFile 'C:\adobehostblock.xml'"
 schtasks /create /tn "AdobeHostBlock" /xml "C:\adobehostblock.xml" /f
 del /f /q "C:\adobehostblock.xml"
+start "" schtasks /Run /TN "AdobeHostBlock"
 pause
 exit
 
 :autodesk
-powershell -Command "Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/minhtuan283/host/main/hostsAutoDesk' -OutFile $env:TEMP\webtemp; Copy-Item 'C:\Windows\System32\drivers\etc\hosts' -Destination $env:TEMP\filetemp; Get-Content $env:TEMP\webtemp, $env:TEMP\filetemp | Sort-Object -Unique | Set-Content $env:TEMP\goptemp; Set-Content 'C:\Windows\System32\drivers\etc\hosts' -Value (Get-Content $env:TEMP\goptemp | Sort-Object -Unique); Remove-Item $env:TEMP\webtemp, $env:TEMP\filetemp, $env:TEMP\goptemp"
+schtasks /End /TN "AutoDeskHostBlock"
+schtasks /Delete /TN "AutoDeskHostBlock" /F
 powershell -Command "Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/minhtuan283/host/main/autodeskhostsblock.xml' -OutFile 'C:\autodeskhostsblock.xml'"
 schtasks /create /tn "AutoDeskHostBlock" /xml "C:\autodeskhostsblock.xml" /f
 del /f /q "C:\autodeskhostsblock.xml"
+start "" schtasks /Run /TN "AutoDeskHostBlock"
 pause
 exit
 
