@@ -73,6 +73,26 @@ powershell -Command "Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/m
 schtasks /create /tn "AutoDeskHostBlock" /xml "C:\autodeskhostsblock.xml" /f
 del /f /q "C:\autodeskhostsblock.xml"
 start "" schtasks /Run /TN "AutoDeskHostBlock"
+:: Chặn các tệp .exe trong "C:\Program Files (x86)\Common Files\Autodesk Shared"
+for /R "C:\Program Files (x86)\Common Files\Autodesk Shared" %%f in (*.exe) do (
+  netsh advfirewall firewall add rule name="Blocked: %%f" dir=out program="%%f" action=block
+)
+:: Chặn các tệp .exe trong "C:\Program Files (x86)\Autodesk"
+for /R "C:\Program Files (x86)\Autodesk" %%f in (*.exe) do (
+  netsh advfirewall firewall add rule name="Blocked: %%f" dir=out program="%%f" action=block
+)
+:: Chặn các tệp .exe trong "C:\Program Files\Autodesk"
+for /R "C:\Program Files\Autodesk" %%f in (*.exe) do (
+  netsh advfirewall firewall add rule name="Blocked: %%f" dir=out program="%%f" action=block
+)
+:: Chặn các tệp .exe trong "C:\Program Files\Common Files\Autodesk"
+for /R "C:\Program Files\Common Files\Autodesk" %%f in (*.exe) do (
+  netsh advfirewall firewall add rule name="Blocked: %%f" dir=out program="%%f" action=block
+)
+:: Chặn các tệp .exe trong "C:\ProgramData\Autodesk"
+for /R "C:\ProgramData\Autodesk" %%f in (*.exe) do (
+  netsh advfirewall firewall add rule name="Blocked: %%f" dir=out program="%%f" action=block
+)
 pause
 exit
 
