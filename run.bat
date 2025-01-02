@@ -46,22 +46,18 @@ start "" schtasks /Run /TN "AdobeHostBlock"
 for /R "C:\Program Files\Adobe" %%f in (*.exe) do (
   netsh advfirewall firewall add rule name="Blocked: %%f" dir=out program="%%f" action=block
 )
-
 :: Chặn các tệp .exe trong "C:\Program Files (x86)\Adobe"
 for /R "C:\Program Files (x86)\Adobe" %%f in (*.exe) do (
   netsh advfirewall firewall add rule name="Blocked: %%f" dir=out program="%%f" action=block
 )
-
 :: Chặn các tệp .exe trong "C:\Program Files (x86)\Common Files\Adobe"
 for /R "C:\Program Files (x86)\Common Files\Adobe" %%f in (*.exe) do (
   netsh advfirewall firewall add rule name="Blocked: %%f" dir=out program="%%f" action=block
 )
-
 :: Chặn các tệp .exe trong "C:\ProgramData\Adobe"
 for /R "C:\ProgramData\Adobe" %%f in (*.exe) do (
   netsh advfirewall firewall add rule name="Blocked: %%f" dir=out program="%%f" action=block
 )
-
 echo Hoan thanh.
 pause
 exit
