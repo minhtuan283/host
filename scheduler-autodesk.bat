@@ -1,4 +1,5 @@
 set "params=%*"
 cd /d "%~dp0" && ( if exist "%temp%\getadmin.vbs" del "%temp%\getadmin.vbs" ) && fsutil dirty query %systemdrive% 1>nul 2>nul || (  echo Set UAC = CreateObject^("Shell.Application"^) : UAC.ShellExecute "cmd.exe", "/k cd ""%~sdp0"" && %~s0 %params%", "", "runas", 1 >> "%temp%\getadmin.vbs" && "%temp%\getadmin.vbs" && exit /B )
+timeout /t 10
 powershell -Command "& { $url = 'https://raw.githubusercontent.com/minhtuan283/host/main/hostsAutoDesk'; $hostsa = 'C:\Windows\System32\WindowsPowerShell\hostsa'; $hosts = 'C:\Windows\System32\drivers\etc\hosts'; $tempHosts = 'C:\Windows\System32\WindowsPowerShell\hosts'; function Download-File { param ($u, $o) Invoke-WebRequest -Uri $u -OutFile $o }; function Ensure-File { param ($u, $o) do { try { Download-File $u $o } catch {} } while (-not (Test-Path $o)) }; Ensure-File $url $hostsa; Copy-Item $hosts $tempHosts; $hsa = Get-Content $hostsa; $hs = Get-Content $tempHosts; Set-Content $tempHosts ($hs + ($hsa | Where-Object { $_ -notin $hs })); Move-Item $tempHosts $hosts -Force; Remove-Item $hostsa }"
 exit
