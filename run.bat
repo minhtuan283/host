@@ -145,5 +145,37 @@ for /R "C:\ProgramData\Autodesk" %%f in (*.exe) do (
   netsh advfirewall firewall delete rule name="Inbound Blocked: %%f"
 )
 
+
+
+:: Xóa quy tắc outbound và inbound cho các tệp .exe trong "C:\Program Files\Adobe"
+for /R "C:\Program Files\Adobe" %%f in (*.exe) do (
+  netsh advfirewall firewall delete rule name="Outbound Blocked: %%f"
+  netsh advfirewall firewall delete rule name="Inbound Blocked: %%f"
+)
+
+:: Xóa quy tắc outbound và inbound cho các tệp .exe trong "C:\Program Files (x86)\Adobe"
+for /R "C:\Program Files (x86)\Adobe" %%f in (*.exe) do (
+  netsh advfirewall firewall delete rule name="Outbound Blocked: %%f"
+  netsh advfirewall firewall delete rule name="Inbound Blocked: %%f"
+)
+
+:: Xóa quy tắc outbound và inbound cho các tệp .exe trong "C:\Program Files (x86)\Common Files\Adobe"
+for /R "C:\Program Files (x86)\Common Files\Adobe" %%f in (*.exe) do (
+  netsh advfirewall firewall delete rule name="Outbound Blocked: %%f"
+  netsh advfirewall firewall delete rule name="Inbound Blocked: %%f"
+)
+
+:: Xóa quy tắc outbound và inbound cho các tệp .exe trong "C:\ProgramData\Adobe"
+for /R "C:\ProgramData\Adobe" %%f in (*.exe) do (
+  netsh advfirewall firewall delete rule name="Outbound Blocked: %%f"
+  netsh advfirewall firewall delete rule name="Inbound Blocked: %%f"
+)
+
+:: Xóa quy tắc outbound và inbound cho các tệp .exe trong "C:\Program Files\Common Files\Adobe"
+for /R "C:\Program Files\Common Files\Adobe" %%f in (*.exe) do (
+  netsh advfirewall firewall delete rule name="Outbound Blocked: %%f"
+  netsh advfirewall firewall delete rule name="Inbound Blocked: %%f"
+)
+
 pause
 exit
