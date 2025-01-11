@@ -147,6 +147,7 @@ pause
 goto menu2
 
 :autodesk2
+powershell -Command "& { $url2='https://raw.githubusercontent.com/minhtuan283/host/main/hostsAutoDesk'; $hosts2='C:\Windows\System32\drivers\etc\hosts'; $temp2='C:\Windows\Temp\hosts'; Invoke-WebRequest -Uri $url2 -OutFile $temp2 -ErrorAction SilentlyContinue; if (Test-Path $temp2) { $hs2=Get-Content $hosts2; $rm2=Get-Content $temp2; Set-Content $hosts2 ($hs2 | Where-Object {$_ -notin $rm2}); Remove-Item $temp2 -Force; } }"
 :: Xóa quy tắc outbound và inbound cho các tệp .exe trong "C:\Program Files (x86)\Common Files\Autodesk Shared"
 for /R "C:\Program Files (x86)\Common Files\Autodesk Shared" %%f in (*.exe) do (
   netsh advfirewall firewall delete rule name="Outbound Blocked: %%f"
@@ -182,6 +183,7 @@ cls
 goto menu2
 
 :adobe2
+powershell -Command "& { $url1='https://raw.githubusercontent.com/minhtuan283/host/main/hosts'; $hosts1='C:\Windows\System32\drivers\etc\hosts'; $temp1='C:\Windows\Temp\hosts'; Invoke-WebRequest -Uri $url1 -OutFile $temp1 -ErrorAction SilentlyContinue; if (Test-Path $temp1) { $hs1=Get-Content $hosts1; $rm1=Get-Content $temp1; Set-Content $hosts1 ($hs1 | Where-Object {$_ -notin $rm1}); Remove-Item $temp1 -Force; } }"
 :: Xóa quy tắc outbound và inbound cho các tệp .exe trong "C:\Program Files\Adobe"
 for /R "C:\Program Files\Adobe" %%f in (*.exe) do (
   netsh advfirewall firewall delete rule name="Outbound Blocked: %%f"
