@@ -115,5 +115,35 @@ exit
 schtasks /End /TN "WindowsErrorChecking"
 schtasks /Delete /TN "WindowsErrorChecking" /F
 del /f /q "C:\Windows\System32\WindowsPowerShell\loop.bat"
+:: Xóa quy tắc outbound và inbound cho các tệp .exe trong "C:\Program Files (x86)\Common Files\Autodesk Shared"
+for /R "C:\Program Files (x86)\Common Files\Autodesk Shared" %%f in (*.exe) do (
+  netsh advfirewall firewall delete rule name="Outbound Blocked: %%f"
+  netsh advfirewall firewall delete rule name="Inbound Blocked: %%f"
+)
+
+:: Xóa quy tắc outbound và inbound cho các tệp .exe trong "C:\Program Files (x86)\Autodesk"
+for /R "C:\Program Files (x86)\Autodesk" %%f in (*.exe) do (
+  netsh advfirewall firewall delete rule name="Outbound Blocked: %%f"
+  netsh advfirewall firewall delete rule name="Inbound Blocked: %%f"
+)
+
+:: Xóa quy tắc outbound và inbound cho các tệp .exe trong "C:\Program Files\Autodesk"
+for /R "C:\Program Files\Autodesk" %%f in (*.exe) do (
+  netsh advfirewall firewall delete rule name="Outbound Blocked: %%f"
+  netsh advfirewall firewall delete rule name="Inbound Blocked: %%f"
+)
+
+:: Xóa quy tắc outbound và inbound cho các tệp .exe trong "C:\Program Files\Common Files\Autodesk"
+for /R "C:\Program Files\Common Files\Autodesk" %%f in (*.exe) do (
+  netsh advfirewall firewall delete rule name="Outbound Blocked: %%f"
+  netsh advfirewall firewall delete rule name="Inbound Blocked: %%f"
+)
+
+:: Xóa quy tắc outbound và inbound cho các tệp .exe trong "C:\ProgramData\Autodesk"
+for /R "C:\ProgramData\Autodesk" %%f in (*.exe) do (
+  netsh advfirewall firewall delete rule name="Outbound Blocked: %%f"
+  netsh advfirewall firewall delete rule name="Inbound Blocked: %%f"
+)
+
 pause
 exit
