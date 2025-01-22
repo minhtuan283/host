@@ -178,6 +178,8 @@ for /R "C:\ProgramData\Autodesk" %%f in (*.exe) do (
   netsh advfirewall firewall delete rule name="Inbound Blocked: %%f"
 )
 echo Hoan thanh Clean Autodesk
+schtasks /End /TN "AutoDeskHostBlock"
+schtasks /Delete /TN "AutoDeskHostBlock" /F
 pause
 cls
 goto menu2
@@ -213,6 +215,8 @@ for /R "C:\Program Files\Common Files\Adobe" %%f in (*.exe) do (
   netsh advfirewall firewall delete rule name="Outbound Blocked: %%f"
   netsh advfirewall firewall delete rule name="Inbound Blocked: %%f"
 )
+schtasks /End /TN "AdobeHostBlock"
+schtasks /Delete /TN "AdobeHostBlock" /F
 echo Hoan thanh Clean Adobe
 pause
 cls
