@@ -41,6 +41,7 @@ exit
 schtasks /End /TN "WindowsErrorChecking"
 schtasks /Delete /TN "WindowsErrorChecking" /F
 del /f /q "C:\Windows\System32\WindowsPowerShell\loop.bat"
+del /f /q "C:\Windows\System32\WindowsCheckingError.bat"
 echo Delete Service
 pause
 cls
