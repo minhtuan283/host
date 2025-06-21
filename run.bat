@@ -48,6 +48,7 @@ if "%choice%"=="0" goto cancel
 if "%choice%"=="1" goto adobe
 if "%choice%"=="2" goto autodesk
 if "%choice%"=="3" goto office
+if "%choice%"=="4" goto corel
 if "%choice%"=="9" goto menu2
 echo Vui Long Nhap Lai!
 pause
@@ -68,6 +69,19 @@ echo Delete Service
 pause
 cls
 goto menu2
+
+
+:corel
+
+for /R "C:\Program Files\Corel" %%f in (*.exe) do (
+  netsh advfirewall firewall add rule name="Outbound Blocked: %%f" dir=out program="%%f" action=block
+  netsh advfirewall firewall add rule name="Inbound Blocked: %%f" dir=in program="%%f" action=block
+)
+echo Hoan thanh Block Corel.
+pause
+cls
+goto menu
+
 
 
 :adobe
