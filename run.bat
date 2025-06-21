@@ -41,6 +41,7 @@ echo    0. Cancel
 echo    1. Adobe
 echo    2. Autodesk
 echo    3. Office
+echo    4. Corel
 echo    9. Clear Service
 echo ====================================
 set /p choice=Nhap vao: 
