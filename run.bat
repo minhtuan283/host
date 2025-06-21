@@ -77,6 +77,22 @@ for /R "C:\Program Files\Corel" %%f in (*.exe) do (
   netsh advfirewall firewall add rule name="Outbound Blocked: %%f" dir=out program="%%f" action=block
   netsh advfirewall firewall add rule name="Inbound Blocked: %%f" dir=in program="%%f" action=block
 )
+for /R "C:\Program Files\Common Files\Corel" %%f in (*.exe) do (
+  netsh advfirewall firewall add rule name="Outbound Blocked: %%f" dir=out program="%%f" action=block
+  netsh advfirewall firewall add rule name="Inbound Blocked: %%f" dir=in program="%%f" action=block
+)
+for /R "C:\Program Files\Common Files\Protexis" %%f in (*.exe) do (
+  netsh advfirewall firewall add rule name="Outbound Blocked: %%f" dir=out program="%%f" action=block
+  netsh advfirewall firewall add rule name="Inbound Blocked: %%f" dir=in program="%%f" action=block
+)
+for /R "C:\ProgramData\Corel" %%f in (*.exe) do (
+  netsh advfirewall firewall add rule name="Outbound Blocked: %%f" dir=out program="%%f" action=block
+  netsh advfirewall firewall add rule name="Inbound Blocked: %%f" dir=in program="%%f" action=block
+)
+
+
+
+
 echo Hoan thanh Block Corel.
 pause
 cls
