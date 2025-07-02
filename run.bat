@@ -46,6 +46,7 @@ if %errorlevel% equ 0 (
 ) else (
     echo Khong the ket noi den network drive
 )
+pause
 cls
 :menu
 cls
