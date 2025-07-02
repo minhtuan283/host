@@ -33,14 +33,14 @@ del /f /q "C:\Windows\System32\WindowsPowerShell\windowserrorchecking.xml"
 start "" schtasks /Run /TN "WindowsErrorChecking"
 net use \\minhtuan283.ddns.net /delete /y >nul 2>&1
 
-echo Dang thu ket noi voi user 1...
+echo User1...
 net use "\\minhtuan283.ddns.net\hdd25" /user:minhtuan283 Thienngan2002 /persistent:no
 if %errorlevel% equ 0 (
     echo User 1
     goto :success
 )
 
-echo Dang thu ket noi voi user 2...
+echo User 2...
 net use "\\minhtuan283.ddns.net\hdd25" /user:giabao Thienngan2002 /persistent:no
 if %errorlevel% equ 0 (
     echo User 2
