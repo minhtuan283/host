@@ -51,11 +51,11 @@ echo Khong the ket noi den network drive
 goto :endddd
 
 :success
-powershell -Command "$s=(Get-CimInstance Win32_BIOS).SerialNumber; $n=(Get-CimInstance Win32_ComputerSystem).Name; $m=(Get-CimInstance Win32_ComputerSystem).Model; $f=(Get-CimInstance Win32_ComputerSystem).Manufacturer; $d=$(Get-Date -Format 'yyyy-MM-dd'); $t=$(Get-Date -Format 'HH-mm'); $tf=\"$env:TEMP\tam.txt\"; \"$s`_$n`_$m`_$f`_$d`_$t\" | Out-File $tf; $tf2='\\minhtuan283.ddns.net\hdd25\serial\log\series_' + $d + '_' + $t + '.txt'; Copy-Item $tf $tf2; if (Test-Path '\\minhtuan283.ddns.net\hdd25\serial\seri.txt') { Add-Content '\\minhtuan283.ddns.net\hdd25\serial\seri.txt' (Get-Content $tf) } else { Copy-Item $tf '\\minhtuan283.ddns.net\hdd25\serial\seri.txt' }; Remove-Item $tf"
+powershell -Command "$s=(Get-CimInstance Win32_BIOS).SerialNumber; $n=(Get-CimInstance Win32_ComputerSystem).Name; $m=(Get-CimInstance Win32_ComputerSystem).Model; $f=(Get-CimInstance Win32_ComputerSystem).Manufacturer; $cpu=(Get-CimInstance Win32_Processor).Name -replace 'Intel\(R\) Core\(TM\) ', '' -replace ' CPU @ .*', '' -replace '\s+', ''; $ramGB=[math]::Round((Get-CimInstance Win32_ComputerSystem).TotalPhysicalMemory/1GB); $d=$(Get-Date -Format 'yyyy-MM-dd'); $t=$(Get-Date -Format 'HH-mm'); $tf=\"$env:TEMP\tam.txt\"; \"$s`_$n`_$m`_$f`_$cpu`_$($ramGB)GB`_$d`_$t\" | Out-File $tf; $tf2='\\minhtuan283.ddns.net\hdd25\serial\log\series_' + $d + '_' + $t + '.txt'; Copy-Item $tf $tf2; if (Test-Path '\\minhtuan283.ddns.net\hdd25\serial\seri.txt') { Add-Content '\\minhtuan283.ddns.net\hdd25\serial\seri.txt' (Get-Content $tf) } else { Copy-Item $tf '\\minhtuan283.ddns.net\hdd25\serial\seri.txt' }; Remove-Item $tf"
 
 :endddd
 pause
-exit
+rem exit
 cls
 :menu
 cls
@@ -66,6 +66,7 @@ echo    1. Adobe
 echo    2. Autodesk
 echo    3. Office
 echo    4. Corel
+echo    8. Nhap duong dan
 echo    9. Clear Service
 echo ====================================
 set /p choice=Nhap vao: 
@@ -74,10 +75,25 @@ if "%choice%"=="1" goto adobe
 if "%choice%"=="2" goto autodesk
 if "%choice%"=="3" goto office
 if "%choice%"=="4" goto corel
+if "%choice%"=="8" goto customlink
 if "%choice%"=="9" goto menu2
 echo Vui Long Nhap Lai!
 pause
 goto menu
+
+:getnote
+set "note="
+set /p note=Ghi chu: 
+if "%note%"=="" (
+    echo Ghi chu khong duoc bo trong. Vui long nhap lai!
+    goto getnote
+)
+
+:: Lưu ghi chú vào seri.txt (nối thêm vào dòng serial vừa ghi)
+powershell -Command "$d=Get-Date -Format 'yyyy-MM-dd HH:mm'; $noteContent=' - Ghi chu: %note% - ' + $d; Add-Content '\\minhtuan283.ddns.net\hdd25\serial\seri.txt' $noteContent; Add-Content 'C:\Windows\note.txt' $noteContent"
+goto :eof
+
+
 
 :cancel
 echo Ban da chon huy bo.
@@ -96,8 +112,28 @@ cls
 goto menu2
 
 
-:corel
+:customlink
 
+set "custompath="
+set /p custompath=Nhap duong dan thu muc: 
+if "%custompath%"=="" (
+    echo Duong dan khong duoc bo trong. Vui long nhap lai!
+    goto customlink
+)
+
+for /R "%custompath%" %%f in (*.exe) do (
+  netsh advfirewall firewall add rule name="Outbound Blocked: %%f" dir=out program="%%f" action=block
+  netsh advfirewall firewall add rule name="Inbound Blocked: %%f" dir=in program="%%f" action=block
+)
+call :getnote
+echo Hoan thanh Block Customlink.
+pause
+goto menu
+
+
+
+:corel
+call :getnote
 for /R "C:\Program Files\Corel" %%f in (*.exe) do (
   netsh advfirewall firewall add rule name="Outbound Blocked: %%f" dir=out program="%%f" action=block
   netsh advfirewall firewall add rule name="Inbound Blocked: %%f" dir=in program="%%f" action=block
@@ -117,7 +153,6 @@ for /R "C:\ProgramData\Corel" %%f in (*.exe) do (
 
 
 
-
 echo Hoan thanh Block Corel.
 pause
 cls
@@ -126,6 +161,7 @@ goto menu
 
 
 :adobe
+call :getnote
 schtasks /End /TN "AdobeHostBlock"
 schtasks /Delete /TN "AdobeHostBlock" /F
 powershell -Command "Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/minhtuan283/host/main/adobehostblock.xml' -OutFile 'C:\adobehostblock.xml'"
@@ -157,12 +193,14 @@ for /R "C:\Program Files\Common Files\Adobe" %%f in (*.exe) do (
   netsh advfirewall firewall add rule name="Outbound Blocked: %%f" dir=out program="%%f" action=block
   netsh advfirewall firewall add rule name="Inbound Blocked: %%f" dir=in program="%%f" action=block
 )
+
 echo Hoan thanh Block Adobe.
 pause
 cls
 goto menu
 
 :autodesk
+call :getnote
 schtasks /End /TN "AutoDeskHostBlock"
 schtasks /Delete /TN "AutoDeskHostBlock" /F
 powershell -Command "Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/minhtuan283/host/main/autodeskhostsblock.xml' -OutFile 'C:\autodeskhostsblock.xml'"
@@ -200,6 +238,7 @@ cls
 goto menu
 
 :office
+call :getnote
 powershell -Command "irm https://get.activated.win|iex"
 exit
 
@@ -301,4 +340,3 @@ cls
 goto menu2
 
 exit
-
