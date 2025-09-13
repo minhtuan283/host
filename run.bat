@@ -55,6 +55,7 @@ powershell -Command "$s=(Get-CimInstance Win32_BIOS).SerialNumber; $n=(Get-CimIn
 
 :endddd
 pause
+exit
 cls
 :menu
 cls
@@ -300,3 +301,4 @@ cls
 goto menu2
 
 exit
+
